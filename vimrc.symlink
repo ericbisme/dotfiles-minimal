@@ -1,0 +1,20 @@
+set nocompatible
+
+set laststatus=2
+set nu
+
+set tabstop=2                     " a tab is two spaces
+set shiftwidth=2                  " an autoindent (with <<) is two spaces
+set expandtab                     " use spaces, not tabs
+set smarttab
+syntax enable
+filetype indent on
+set autoindent
+
+set listchars=tab:\ \             " a tab should display as "  ", trailing whitespace as "."
+set listchars+=trail:.            " show trailing spaces as dots
+
+set hlsearch 
+set incsearch
+
+colorscheme delek

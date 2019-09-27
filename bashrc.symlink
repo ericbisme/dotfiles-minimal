@@ -1,0 +1,30 @@
+# .bashrc
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+	. /etc/bashrc
+fi
+
+# Uncomment the following line if you don't like systemctl's auto-paging feature:
+# export SYSTEMD_PAGER=
+
+# User specific aliases and functions
+
+function _update_ps1() {
+  PS1="$(${HOME}/.bin/powerline-go -error $? -shell bash -modules aws,venv,kube,cwd,git)"
+}
+
+if [ "$TERM" != "linux" ] && [ -f "${HOME}/.bin/powerline-go" ]; then
+  PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+fi
+
+set -o vi
+
+source <(kubectl completion bash)
+source <(kubectl completion bash | sed 's/kubectl/k/g')
+
+# Aliases
+alias k=kubectl
+alias kgp="k get pods"
+
+alias gcam='git commit -a -m'
